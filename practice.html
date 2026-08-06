@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evan Monahan · The Practice</title>
+<meta name="description" content="What the instruments behind Bridgehead Labs make possible: standing research, recall over the firm's own record, a cited strategy knowledge base of 3,335 cards, and published RL environments.">
+<script src="tracker.js" async></script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23234a6c'/><rect x='3' y='3' width='10' height='10' fill='none' stroke='%23f4f4f0' stroke-width='1'/></svg>">
+<style>
+  :root {
+    --paper: #FBFAF7;
+    --ink: #191917;
+    --ink-soft: #5C5A53;
+    --rule: #DFDCD2;
+    --inset: #F3F1EA;
+    --accent: #1F6B4C;
+    --signal: #B3391F;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #171613;
+      --ink: #E9E7DF;
+      --ink-soft: #A09E93;
+      --rule: #33322C;
+      --inset: #1F1E1A;
+      --accent: #5FBE92;
+      --signal: #E0704B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #171613;
+    --ink: #E9E7DF;
+    --ink-soft: #A09E93;
+    --rule: #33322C;
+    --inset: #1F1E1A;
+    --accent: #5FBE92;
+    --signal: #E0704B;
+  }
+  :root[data-theme="light"] {
+    --paper: #FBFAF7;
+    --ink: #191917;
+    --ink-soft: #5C5A53;
+    --rule: #DFDCD2;
+    --inset: #F3F1EA;
+    --accent: #1F6B4C;
+    --signal: #B3391F;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Charter, 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+    font-size: 1.06rem;
+    line-height: 1.62;
+    margin: 0;
+    padding: 0 1.25rem;
+  }
+  .page {
+    max-width: 41rem;
+    margin: 0 auto;
+    padding: 4.5rem 0 5rem;
+  }
+  .mono { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+  p { margin: 0 0 1.1rem; }
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2.5px;
+  }
+  a:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  header.masthead { margin-bottom: 3.25rem; }
+  .kicker {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 1rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 6vw, 2.7rem);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.12;
+    margin: 0 0 1.4rem;
+    text-wrap: balance;
+  }
+  .lede { font-size: 1.13rem; }
+  .boundary {
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-top: 1.3rem;
+  }
+
+  .verify {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin: 2rem 0 0;
+    padding: 0.9rem 0;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+    line-height: 1.9;
+  }
+  .verify .vlabel {
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-size: 0.72rem;
+  }
+  .verify ul { list-style: none; margin: 0.2rem 0 0; padding: 0; }
+  .verify li { overflow-wrap: anywhere; }
+
+  section { margin: 3.4rem 0 0; }
+  .eyebrow {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.5rem;
+  }
+  section.broke .eyebrow { color: var(--signal); }
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+  }
+  .figure { font-variant-numeric: tabular-nums; }
+
+  details {
+    background: var(--inset);
+    border-left: 2px solid var(--rule);
+    margin: 1.25rem 0 0;
+    padding: 0.75rem 1.1rem;
+  }
+  details[open] { padding-bottom: 1rem; }
+  summary {
+    cursor: pointer;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    list-style-position: outside;
+  }
+  summary:hover { color: var(--ink); }
+  details p { font-size: 0.98rem; margin-top: 0.9rem; }
+  details p:last-child { margin-bottom: 0.2rem; }
+
+  .shelf { list-style: none; margin: 1.2rem 0 0; padding: 0; }
+  .shelf li { border-top: 1px solid var(--rule); padding: 0.85rem 0; }
+  .shelf li:last-child { border-bottom: 1px solid var(--rule); }
+  .shelf .what { display: block; }
+  .shelf .where {
+    display: block;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin-top: 0.2rem;
+    overflow-wrap: anywhere;
+  }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+  }
+  footer p { margin-bottom: 0.7rem; }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    details { border-left-color: #999; }
+    a { color: #000; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <p style="font-family:ui-monospace,Menlo,monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1.5rem;"><a href="index.html" style="text-decoration:none;">&larr; Selected Work</a></p>
+
+  <header class="masthead">
+    <p class="kicker">Evan Monahan &middot; August 2026</p>
+    <h1>What the instruments make possible</h1>
+    <p class="lede">I run my consulting practice on a system I designed and had Claude build. I call it Laika. What matters about it is not the wiring, it is what having it changes: the research arrives before I ask for it, the firm remembers things I do not, every framework I cite carries a page number, and the failures get written down. This page is what the instruments turn up, not a tour of them.</p>
+    <p class="boundary">I am building a consulting firm on this. As of August that means one live engagement and nothing closed, which is why the client work stays private while everything else here carries a number you can ask me about. Everything public is linked below.</p>
+    <div class="verify">
+      <span class="vlabel">Check the work</span>
+      <ul>
+        <li><a href="https://github.com/evmonaha880/latitude-longitude">github.com/evmonaha880/latitude-longitude</a> &middot; RL environments, source</li>
+        <li><a href="https://evmonaha880.github.io/latitude-longitude/disruption-timeline.html">evmonaha880.github.io/latitude-longitude/disruption-timeline.html</a> &middot; interactive timeline</li>
+        <li><a href="https://evanmonahan1888.substack.com">evanmonahan1888.substack.com</a> &middot; the essays</li>
+      </ul>
+    </div>
+  </header>
+
+  <section>
+    <p class="eyebrow">Standing research</p>
+    <h2>The morning arrives already read</h2>
+    <p>Supply chain and AI move faster than a weekly reading habit, so the reading is standing rather than occasional. The day's signal is gathered overnight, read against what the practice is actually working on, and waiting by the time I sit down. That moves where the day starts: at the judgment instead of the gathering, which is the only part of that work a client is paying for.</p>
+    <p>It surfaces, it does not decide. It puts the right five things in front of me and is wrong about the ranking often enough that I still read all five.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Recall</p>
+    <h2>Ask a vague question, get the right note back</h2>
+    <p>Everything the practice produces gets written down, and the record is searchable by meaning, not by keyword. A question as loose as "what was I working on the week the Red Sea thing started" comes back with the note, the message, and the journal entry that touch it.</p>
+    <p>So the firm's memory is not my memory. Nothing gets re-derived, a client's context survives a three-month gap between conversations, and a claim I made in March can be checked in August against what I actually had in front of me at the time.</p>
+    <p>On privacy: the archive stays on one machine and syncs nowhere, and the offsite backup is encrypted before it leaves. But agents do send what they retrieve to the model while they work. That is the tool doing its job, and it is not an airtight boundary, so I am not going to describe it as one.</p>
+  </section>
+
+  <section id="knowledge">
+    <p class="eyebrow">Knowledge pipelines</p>
+    <h2>Every card cites its page</h2>
+    <p class="figure">I distill the classic strategy literature into knowledge bases where every card cites the page it came from, and a card that fails citation gets deleted. The corpus stands at <strong>3,335 cards across 23 books</strong>. Two smaller banks sit beside it, built the same way: 619 cards of supply-chain signal and 379 cards of consulting craft.</p>
+    <p class="figure">The formal full-corpus gate has run once, on June 28, when all 1,889 cards from the first 10 books passed a citation check end to end. Everything added since has been citation-checked at extraction, not re-gated as a whole corpus. Those are different claims and I am not going to round one into the other.</p>
+    <p>The payoff is at the client's end. A recommendation in a deliverable arrives with its page reference attached, so the client can go read the source and disagree with it. The gate is strict because these cards are built for paid advisory work, where an uncited claim is a liability I would own personally.</p>
+    <details>
+      <summary>How the pipeline keeps itself honest</summary>
+      <p>Extraction and verification are kept apart on purpose, so the reviewer never grades its own work. Citation failure is a delete, not a flag, because a card that survives with a question mark on it eventually gets quoted anyway.</p>
+    </details>
+  </section>
+
+  <section>
+    <p class="eyebrow">Darkroom Developments</p>
+    <h2>Shipped in public</h2>
+    <p class="figure">Latitude &times; Longitude is a pair of reinforcement-learning environments that simulate GPU procurement through a supply crisis, with scenarios corroborated against real constraint data. I built them solo and entered them at a hackathon run by HUD, a Y Combinator-backed startup, on June 20. One graded rollout hit the environment's maximum reward of 1.000. That is a single rollout.</p>
+    <ul class="shelf">
+      <li>
+        <span class="what"><a href="https://evmonaha880.github.io/latitude-longitude/disruption-timeline.html">An interactive timeline of the disruption scenario</a></span>
+        <span class="where">https://evmonaha880.github.io/latitude-longitude/disruption-timeline.html</span>
+      </li>
+      <li>
+        <span class="what"><a href="https://evanmonahan1888.substack.com/p/developing-the-picture">"Developing the Picture," the opening essay &middot; June 30</a></span>
+        <span class="where">https://evanmonahan1888.substack.com/p/developing-the-picture</span>
+      </li>
+      <li>
+        <span class="what"><a href="https://evanmonahan1888.substack.com/p/a-clock-for-the-storm">"A Clock for the Storm," on the environments &middot; July 8</a></span>
+        <span class="where">https://evanmonahan1888.substack.com/p/a-clock-for-the-storm</span>
+      </li>
+      <li>
+        <span class="what"><a href="https://github.com/evmonaha880/latitude-longitude">The source, public on GitHub</a></span>
+        <span class="where">https://github.com/evmonaha880/latitude-longitude</span>
+      </li>
+    </ul>
+    <details>
+      <summary>What the environments actually test</summary>
+      <p>An agent has to buy and allocate scarce GPU capacity while a crisis moves under it, with allocations tightening and spot prices spiking mid-run. Every scenario is deterministic, so a run can be replayed and graded, and the reward is normalized against optima found by brute force rather than tuned by hand. The result I found most interesting was qualitative: in one rollout the model surfaced a three-chip sourcing strategy the scenario never suggests. I have not published that trace.</p>
+      <p>What the 1.000 does not mean: it is one graded rollout on one scenario, not an averaged benchmark, and I have not published learning curves.</p>
+    </details>
+  </section>
+
+  <section class="broke">
+    <p class="eyebrow">The record</p>
+    <h2>What broke, written down</h2>
+    <p>The same record that holds the work holds the failures. Since June, four have been serious enough to get a written post-mortem: what happened, what actually caused it, what I changed, and in one case a guard that is designed and still unbuilt.</p>
+    <p>The one worth admitting cost me a week. I had a recurring morning failure, decided I knew the cause, and spent days building a defense against it. Then the same failure arrived three more times in a single morning under conditions my theory said were impossible, which proved the theory wrong. I built the correct fix, then deleted the machinery I had just finished. The post-mortem says all of that, because a record that only holds the wins is not a record, and because the diagnosis being wrong for a week is the more useful thing to know about how I work.</p>
+  </section>
+
+  <footer>
+    <p>Drafted by me, refined and built with Claude Code. Every number on this page was checked against its source log or note.</p>
+    <p>Laika is named for the space dog and the camera.</p>
+    <p class="mono">Evan Monahan &middot; Tiburon, CA &middot; <a href="https://www.linkedin.com/in/evan-monahan-982ba931">https://www.linkedin.com/in/evan-monahan-982ba931</a></p>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement, key = "site-theme";
+    var saved = null;
+    try { saved = localStorage.getItem(key); } catch (e) {}
+    if (saved) root.setAttribute("data-theme", saved);
+  })();
+  addEventListener('beforeprint', function () {
+    document.querySelectorAll('details').forEach(function (d) { d.setAttribute('open', ''); });
+  });
+</script>
+</body>
+</html>
