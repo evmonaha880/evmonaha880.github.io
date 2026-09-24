@@ -445,3 +445,18 @@ a.tag-dl:hover, a.tag-dl:focus-visible { color: var(--blueprint); border-color: 
 .doc-title:hover, .doc-title:focus-visible { color: var(--blueprint); outline: none; }
 /* the multi-link primary card carries no arrow, so it needs no arrow column */
 .doc-primary:not(:has(.doc-go)) { grid-template-columns: 8.5rem 1fr; }
+
+/* ---------- the Eastman pair: essay + its record, read together ---------- */
+.pair-note {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  margin: -0.4rem 0 1rem;
+}
+.doc-pair { border-left: 2px solid var(--blueprint); background: var(--paper-raised); }
+.doc-pair .doc { padding-left: 1.1rem; }
+.doc-pair .doc:hover, .doc-pair .doc:focus-visible { padding-left: 1.6rem; background: var(--paper); }
+@media (max-width: 560px) {
+  .doc-pair .doc { padding-left: 0.9rem; }
+}
